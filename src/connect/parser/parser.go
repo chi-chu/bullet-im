@@ -5,6 +5,7 @@ type Parser interface {
 	ParseMessage()
 }
 
-func Init() (Parser, error) {
-	return nil, nil
+func Init() Parser {
+	o := &p{}
+	return o
 }
