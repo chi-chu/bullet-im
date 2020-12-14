@@ -28,6 +28,7 @@ func newClient(c Conn) *Client {
 		msgChan: 	make(chan *message.Message, server.c.MsgCacheSize),
 		stop:		make(chan struct{}),
 	}
+	server.clientMap.Store("", o)
 	return &o
 }
 
@@ -38,8 +39,14 @@ func (c *Client) Run() {
 }
 
 func (c *Client) Receive() {
-	for {
-		data := c.c.Read()
+	if c.Auth() {
+
+		for {
+			data := c.c.Read()
+		}
+	} else {
+		close(c.stop)
+		return
 	}
 }
 
@@ -58,4 +65,8 @@ func (c *Client) Send() {
 			return
 		}
 	}
+}
+
+func (c *Client) Auth() bool {
+
 }

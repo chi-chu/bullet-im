@@ -11,6 +11,7 @@ type Config struct {
 	LogLevel		int				`json:"log_level"`
 	LogType			string			`json:"log_type"`
 	Port			int				`json:"port"`
+	RpcPort			int				`json:"rpc_port"`
 	MsgCacheSize	uint			`json:"msg_cache_size"`
 	CertFile		string			`json:"cert_file"`
 	KeyFile			string			`json:"key_file"`
@@ -40,6 +41,7 @@ func defaultConfig() *Config {
 		1,
 		"",
 		8090,
+		9090,
 		8096,
 		"",
 		"",

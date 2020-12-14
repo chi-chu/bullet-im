@@ -17,7 +17,11 @@ func main() {
 		panic(err)
 	}
 	p := parser.Init()
-	r, err := rpc.Init()
+	r, err := rpc.InitClient(c)
+	if err != nil {
+		panic(err)
+	}
+	err = rpc.InitServer(c)
 	if err != nil {
 		panic(err)
 	}

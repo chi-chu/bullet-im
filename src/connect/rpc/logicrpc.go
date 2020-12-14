@@ -1,16 +1,19 @@
 package rpc
 
-import "google.golang.org/grpc"
+import (
+	"github.com/chi-chu/bullet-im/src/connect/config"
+)
 
 type Server interface {
-	PushMessage()
+	HandleMsg()
+	GetSyncMsg()
 }
 
 type logicServer struct {
 
 }
 
-func Init() (Server, error) {
-	s := grpc.NewServer()
+func InitClient(c *config.Config) (Server, error) {
+
 	return nil, nil
 }

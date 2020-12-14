@@ -9,14 +9,16 @@ import (
 	"github.com/chi-chu/bullet-im/src/connect/storage"
 	"github.com/chi-chu/log"
 	"net"
+	"sync"
 )
 
 type source struct {
-	p		parser.Parser
-	s		storage.Storage
-	r		rpc.Server
-	c		*config.Config
-	status	*Status
+	p				parser.Parser
+	s				storage.Storage
+	r				rpc.Server
+	c				*config.Config
+	clientMap		sync.Map
+	status			*Status
 }
 
 type Status struct {
